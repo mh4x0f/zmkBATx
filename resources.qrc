@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/m-battery.png</file>
+        <file>icons/low-battery.png</file>
+        <file>icons/half-battery.png</file>
+        <file>icons/full-battery.png</file>
+        <file>icons/reload.png</file>
+        <file>icons/main.png</file>
+        <file>icons/main-32.png</file>
+        <file>icons/about-icon.png</file>
+    </qresource>
+    <qresource prefix="/themes">
+        <file>assets/indigo.qss</file>
+    </qresource>
+</RCC>

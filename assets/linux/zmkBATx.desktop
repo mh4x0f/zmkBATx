@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=zmkBATx
+Comment=Opensource tool for peripheral battery monitoring zmk split keyboard over BLE for linux 
+Exec=zmkBATx
+Icon=zmkBATx
+Categories=Utility;DataVisualization;Qt;
+Name[en_US]=zmkBATx.desktop

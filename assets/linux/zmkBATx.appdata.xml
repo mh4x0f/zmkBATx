@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2024 Marcos Bomfim (mh4x0f) <mh4root@gmail.com> -->
+
+<component type="desktop-application">
+  <id>zmkBATx</id>
+  <name>zmkBATx</name>
+  <launchable type="desktop-id">zmkBATx.desktop</launchable>
+
+  <summary>Opensource tool for peripheral battery monitoring zmk split keyboard over BLE for linux </summary>
+  <description>
+  </description>
+
+  <releases>
+    <release version="0.1" date="" />
+  </releases>
+
+  <project_license>GPL-3.0+</project_license>
+  <metadata_license>CC0-1.0</metadata_license>
+  <content_rating type="oars-1.1" />
+
+  <developer_name>mh4x0f</developer_name>
+  <updatecontact>mh4x0f@gmail.com</updatecontact>
+
+  <screenshots>
+    <screenshot type="default">
+      <image></image>
+      <caption></caption>
+    </screenshot>
+  </screenshots>
+
+  <requires>
+    <display_length>720</display_length>
+  </requires>
+  <supports>
+    <control>keyboard</control>
+    <control>zmk keyboard</control>
+    <control>touch</control>
+  </supports>
+
+  <categories>
+    <category>Utility</category>
+  </categories>
+
+  <keywords>
+    <keyword>battery monitor BLE bluetooth</keyword>
+    <keyword>bluetooth low energy</keyword>
+    <keyword>zmk split keyboard</keyword>
+  </keywords>
+</component>
