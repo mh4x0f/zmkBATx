@@ -15,6 +15,7 @@ public:
     static bool contains(const QString &key);
     static QVariant value(const QString &key, const QVariant &defaultValue = QVariant());
     static void setValue(const QString &key, const QVariant &value);
+    static bool checkIfEmpty(const QString &key);
 
 private:
     static AppSettings *s_instance;

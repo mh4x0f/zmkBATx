@@ -42,3 +42,8 @@ void AppSettings::setValue(const QString &key, const QVariant &value)
 {
     s_instance->m_settings.setValue(key, value);
 }
+
+bool AppSettings::checkIfEmpty(const QString &key)
+{
+    return s_instance->m_settings.value(key).toString().isEmpty();
+}

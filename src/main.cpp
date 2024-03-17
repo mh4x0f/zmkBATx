@@ -13,6 +13,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationDomain("zmkBATx");
     QCoreApplication::setApplicationName("zmkBATx");
 
+    AppSettings *pref = AppSettings::getInstance();
     QFile file(":themes/assets/indigo.qss");
     file.open(QFile::ReadOnly);
     QString styleSheet = QLatin1String(file.readAll());
@@ -26,7 +27,11 @@ int main(int argc, char *argv[])
 
     MainWindow w;
     w.setFixedSize(573,405);
-    w.show();
+    if (!pref->checkIfEmpty("current_device_name")){
+        qDebug() << "Hide app to system tray";
+        w.hide();
+    }
+    else w.show();
 
     return a.exec();
 }

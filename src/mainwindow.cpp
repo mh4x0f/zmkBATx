@@ -125,7 +125,7 @@ void MainWindow::dataConnectedToDevice(bool status)
         ui->connectButton->setEnabled(false);
     }
     ui->disconnectButton->setEnabled(true);
-    if (!pref->value("current_device_name").isNull())
+    if (!pref->checkIfEmpty("current_device_name"))
         ui->devicesComboBox->setCurrentIndex(
             m_bleInterfaceBluez->getDevicesNames()
                 .indexOf(pref->value("current_device_name"))

@@ -171,6 +171,7 @@ void BLEInterfaceBluez::disconnectDevice( ){
     if (l_device  != nullptr)
         l_device->disconnect();
     this->update_connected(false);
+    pref->setValue("current_device_name", "");
 }
 
 void BLEInterfaceBluez::connectCurrentDevice()
@@ -241,7 +242,7 @@ void BLEInterfaceBluez::checkDevicePiredUpdate() {
 }
 
 void BLEInterfaceBluez::loadConfigDevice() {
-    if (!pref->value("current_device_name").isNull())
+    if (!pref->checkIfEmpty("current_device_name"))
         if (mDevicesNames.contains(pref->value("current_device_name"))){
             qDebug() << "restore : " << mDevicesNames.indexOf(pref->value("current_device_name")) << "device: " << pref->value("current_device_name");
             this->set_currentDevice(mDevicesNames.indexOf(pref->value("current_device_name")));
