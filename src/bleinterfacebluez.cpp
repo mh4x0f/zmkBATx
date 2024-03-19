@@ -53,11 +53,6 @@ BLEInterfaceBluez::BLEInterfaceBluez(QObject *parent) : QObject(parent) {
     m_adapters  = m_bluez.get_adapters();
 
     qWarning() <<  "Available adapters size: " << m_adapters.size() << Qt::endl;
-    qWarning() <<  "Available adapters: " << Qt::endl;
-    for (int i = 0; i < m_adapters.size(); i++) {
-        qDebug() << "[" << i << "] " << m_adapters[i]->identifier() << " [" << m_adapters[i]->address() << "]"
-                 << Qt::endl;
-    }
     if (m_adapters.size() > 0)
         m_adapter_defualt = m_adapters[0];
 
@@ -79,9 +74,8 @@ void BLEInterfaceBluez::addDevices(std::vector<std::shared_ptr<SimpleBluez::Devi
     qDeleteAll(m_devices);
     m_devices.clear();
     m_servicesList.clear();
-    qDebug()<< "The following devices were found:" << Qt::endl;
+    qDebug() <<  "devices lengh: " << devices.size() << Qt::endl;
     for (int i = 0; i < devices.size(); i++) {
-        qDebug()<< "[" << i << "] " << devices[i]->name() << " [" << devices[i]->address() << "]";
         DeviceInfoBluez *dev = new DeviceInfoBluez(devices[i]);
         mDevicesNames.append(QString("%1 [%2]").arg(dev->getName()).arg(dev->getAddress()));
         m_devices.append(dev);
@@ -114,14 +108,13 @@ void BLEInterfaceBluez::readCharacteristicByService(const std::shared_ptr<Simple
         }
     }
     qDebug() << this->hDeviceBatteryInfo;
-    dataReceivedBatteryInfo(hDeviceBatteryInfo);
+    emit dataReceivedBatteryInfo(hDeviceBatteryInfo);
 }
 
 std::vector<std::shared_ptr<SimpleBluez::Service>> BLEInterfaceBluez::findServicesByUuid(const QBluetoothUuid &qBluetoothUuid){
     std::vector<std::shared_ptr<SimpleBluez::Service>> services;
     if (!m_servicesList.empty()){
         for (int i = 0; i < m_servicesList.size(); i++) {
-            qDebug() << "[" << i << "] " << m_servicesList[i].first->uuid() << " " << m_servicesList[i].second->uuid();
             if (QBluetoothUuid(QString::fromStdString(m_servicesList[i].first->uuid())) == qBluetoothUuid)
                 services.push_back(m_servicesList[i].first);
         }

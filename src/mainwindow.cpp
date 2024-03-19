@@ -112,10 +112,11 @@ void MainWindow::dataReceivedBatteryInfo(const QHash<DeviceInfoBluez::BatteryTyp
     else
         trayIcon->setIcon(QIcon(":/icons/low-battery.png"));
     trayIcon->setToolTip(
-            QString("Central: %1% \nPeripheral: %2%").arg(
-            dataBatteryInfo[DeviceInfoBluez::BatteryType::Central]).arg(
-            dataBatteryInfo[DeviceInfoBluez::BatteryType::Peripheral]
-    ));
+        QString("%1\nCentral: %2%\nPeripheral: %3%")
+            .arg(ui->devicesComboBox->currentText().split(QRegularExpression("\\s+"), Qt::SkipEmptyParts)[0])
+            .arg(dataBatteryInfo[DeviceInfoBluez::BatteryType::Central])
+            .arg(dataBatteryInfo[DeviceInfoBluez::BatteryType::Peripheral])
+        );
 }
 
 
