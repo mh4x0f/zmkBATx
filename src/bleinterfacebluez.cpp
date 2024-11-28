@@ -86,7 +86,7 @@ void BLEInterfaceBluez::addDevices(std::vector<std::shared_ptr<SimpleBluez::Devi
 void BLEInterfaceBluez::readCharacteristicByService(const std::shared_ptr<SimpleBluez::Service> &service )
 {
     for (auto charac : service->characteristics()) {
-        SimpleBluez::ByteArray value = charac->read();
+        std::string value = charac->read();
         auto battery_value = hex2dec(QString::fromStdString(value.c_str()).toUtf8().toHex().toStdString());
         qDebug() << "Characteristic uuid: " << charac->uuid();
         qDebug() << "Characteristic contents: " << battery_value;
